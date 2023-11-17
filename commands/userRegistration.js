@@ -3,21 +3,23 @@ const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("서버정보")
-    .setDescription("서버정보 확인")
-    .addStringOption((option) => option.setName("이름").setDescription("응애").setRequired(true)),
+    .setName("유저등록")
+    .setDescription("모의투자에 참여하기 위해 유저를 등록합니다."),
   async execute(interaction) {
-    const nameset = interaction.options.getString("이름");
     const data = await userRegistration.findOne({
-      Guild: interaction.guild.id,
+      name: interaction.user.id,
     });
-
     if (!data) {
       const applyname = await userRegistration.create({
         Guild: interaction.guild.id,
-        name: nameset,
+        name: interaction.user.id,
+        Money: 100000000,
+        coins: [
+          { coinName: "BTC", amount: 5 },
+          { coinName: "ETH", amount: 10 },
+        ],
       });
-      interaction.reply(`${nameset}님! 등록되셨습니다!`);
+      interaction.reply(`${interaction.user}님! 등록되셨습니다!`);
     } else {
       interaction.reply("이미 등록되어 있습니다.");
     }
