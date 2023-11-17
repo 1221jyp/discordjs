@@ -1,9 +1,10 @@
 const { SlashCommandBuilder } = require("discord.js");
 const request = require("request");
+const coinNames = require("../models/coinnames.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("비트코인")
+    .setName("코인시세")
     .setDescription("비트코인 종가(현재가)를 알려줍니다."),
   async execute(interaction) {
     const url = `https://api.upbit.com/v1/ticker?markets=KRW-BTC`;

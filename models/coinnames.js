@@ -1,14 +1,12 @@
-const coinNames = {
+const coinNameList = {
   BTC: "비트코인",
   ETH: "이더리움",
   XRP: "리플",
   ETC: "이더리움클래식",
   CVC: "시빅",
-  DGB: "디지바이트",
   SC: "시아코인",
   SNT: "스테이터스네트워크토큰",
   WAVES: "웨이브",
-  NMR: "뉴메레르",
   XEM: "넴",
   QTUM: "퀀텀",
   BAT: "베이직어텐션토큰",
@@ -189,4 +187,4 @@ const coinNames = {
   GLMR: "문빔",
 };
 
-module.exports = coinNames;
+module.exports = coinNameList;

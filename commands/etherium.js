@@ -6,7 +6,7 @@ module.exports = {
     .setName("이더리움")
     .setDescription("비트코인 종가(현재가)를 알려줍니다."),
   async execute(interaction) {
-    const url = `https://api.upbit.com/v1/ticker?markets=KRW-ETH`;
+    const url = `https://api.upbit.com/v1/ticker?markets=KRW-DGB`;
     request(url, { json: true }, (err, res, body) => {
       const data = body;
       console.log(data[0].trade_price);
