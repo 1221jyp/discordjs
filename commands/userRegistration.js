@@ -13,13 +13,12 @@ module.exports = {
       const applyname = await userRegistration.create({
         Guild: interaction.guild.id,
         name: interaction.user.id,
-        Money: 100000000,
-        coins: [
-          { coinName: "BTC", amount: 5 },
-          { coinName: "ETH", amount: 10 },
-        ],
+        Money: 500000000,
+        coins: [],
       });
-      interaction.reply(`${interaction.user}님! 등록되셨습니다!`);
+      interaction.reply(
+        `${interaction.user}님! 등록되셨습니다! 500,000,000₩이 기본으로 지급됩니다.`
+      );
     } else {
       interaction.reply("이미 등록되어 있습니다.");
     }

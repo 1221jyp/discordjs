@@ -9,7 +9,7 @@ dotenv.config();
 
 mongoose
   .connect(process.env.mongodb, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(console.log("connected"));
+  .then(console.log("connected DB"));
 
 const client = new Client({
   intents: [
