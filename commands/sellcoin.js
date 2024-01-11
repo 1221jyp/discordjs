@@ -104,18 +104,16 @@ module.exports = {
       interaction.reply(
         `${interaction.user}, 매도에 실패했습니다. 정확한 코인명을 입력하거나 코인종목과 매도개수를 정확히 입력하세요.`
       );
+    } else if (isNaN(Number(itemCount))) {
+      interaction.reply(`${interaction.user}, 코인 개수에는 숫자만을 입력해 주세요.`);
     } else if (itemCount <= 0) {
       interaction.reply(`${interaction.user}, 코인 개수는 양수만을 입력해야 합니다.`);
+    } else if (hasTwoOrMoreDecimalPlaces) {
+      interaction.reply(`${interaction.user}, 소수점 둘째자리까지만 입력가능합니다.`);
     } else if (!coinFound) {
       interaction.reply(`${interaction.user}, 코인을 보유하고 있지 않습니다.`);
     } else if (coinAmount.toFixed(2) < itemCount) {
       interaction.reply(`${interaction.user}, 보유한 코인의 양보다 많습니다.`);
-    } else if (isNaN(Number(itemCount))) {
-      interaction.reply(`${interaction.user}, 코인 개수에는 숫자만을 입력해 주세요.`);
-    } else if (isNaN(Number(itemCount))) {
-      interaction.reply(`${interaction.user}, 코인 개수에는 숫자만을 입력해 주세요.`);
-    } else if (hasTwoOrMoreDecimalPlaces) {
-      interaction.reply(`${interaction.user}, 소수점 둘째자리까지만 입력가능합니다.`);
     } else {
       const url = `https://api.upbit.com/v1/ticker?markets=KRW-${englishCoinName}`;
       request(url, { json: true }, (err, res, body) => {

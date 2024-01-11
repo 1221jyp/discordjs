@@ -16,7 +16,7 @@ function convertKoreanToEnglish(koreanCoinName) {
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("코인시세")
+    .setName("코인조회")
     .setDescription("입력한 코인의 현재가를 알려줍니다.")
     .addStringOption((option) =>
       option

@@ -5,7 +5,7 @@ const request = require("request");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("코인조회")
+    .setName("내자산")
     .setDescription("자신이 보유하고있는 코인을 확인합니다."),
   async execute(interaction) {
     function getCoinPrice(searchCoinPrice) {

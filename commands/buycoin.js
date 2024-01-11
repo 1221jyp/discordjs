@@ -105,24 +105,22 @@ module.exports = {
       // some() 메서드는 배열의 어느 하나의 요소라도 주어진 함수를 통과하는지 테스트합니다.
       return coinsArray.some((coin) => coin.coinName === coinToCheck);
     }
-    if (userCoinData.coins.length >= 10) {
-      interaction.reply(
-        `${interaction.user}, 코인 종류를 최대한도인 10개까지 보유하고 있습니다. 새로운 코인을 매수할 수 없습니다.`
-      );
-      return; // 함수 실행을 여기서 중단
-    }
     if (!userCoinData) {
       interaction.reply(`${interaction.user}등록되지 않은 유저입니다.`);
     } else if (!englishCoinName || !buyItem || !itemCount) {
       interaction.reply(
         `${interaction.user}, 매수에 실패했습니다. 정확한 코인명을 입력하거나 코인종목과 매수개수를 정확히 입력하세요.`
       );
-    } else if (itemCount <= 0) {
-      interaction.reply(`${interaction.user}, 코인 개수는 양수만을 입력해야 합니다.`);
     } else if (isNaN(Number(itemCount))) {
       interaction.reply(`${interaction.user}, 코인 개수에는 숫자만을 입력해 주세요.`);
+    } else if (itemCount <= 0) {
+      interaction.reply(`${interaction.user}, 코인 개수는 양수만을 입력해야 합니다.`);
     } else if (hasTwoOrMoreDecimalPlaces) {
       interaction.reply(`${interaction.user}, 소수점 둘째자리까지만 입력가능합니다.`);
+    } else if (userCoinData.coins.length >= 10) {
+      interaction.reply(
+        `${interaction.user}, 코인 종류를 최대한도인 10개까지 보유하고 있습니다. 새로운 코인을 매수할 수 없습니다.`
+      );
     } else {
       const url = `https://api.upbit.com/v1/ticker?markets=KRW-${englishCoinName}`;
       request(url, { json: true }, (err, res, body) => {
